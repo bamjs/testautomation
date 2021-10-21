@@ -1,10 +1,12 @@
 const { Builder, By, Key, until, Browser } = require('selenium-webdriver');
+const { PageLoadStrategy } = require('selenium-webdriver/lib/capabilities');
 // By = webdriver.By,
 // until = webdriver.until; 
 { describe, before, after, it } require('selenium-webdriver/testing');
 // var driver;
 require("geckodriver")
-require("chromedriver")
+require("chromedriver");
+// require('org.openqa.selenium.JavascriptExecutor')
 describe("this is test for banks ", function () {
     this.timeout(500000);
     var driver;
@@ -17,9 +19,9 @@ describe("this is test for banks ", function () {
 
             console.log(startTime);
             var mobile = driver.wait(until.elementLocated(By.name('mobile')));
-            mobile.sendKeys('7815925941');
+            mobile.sendKeys('9876543210');
             var password = driver.wait(until.elementLocated(By.name(`password`)));
-            password.sendKeys("Akhil@0002")
+            password.sendKeys("123456")
 
             var button = driver.wait(until.elementLocated(By.css(".primary")));
             await button.click();
@@ -54,19 +56,21 @@ describe("this is test for banks ", function () {
     // describe(`this is for adding banner images`, () => {
 
     it("this is test add banners", async function () {
-        
-     var createBanner = driver.wait(until.elementLocated(By.xpath("/html/body/application-root/div/application-layout/div/div/div/application-banners-list-container/div/div/div[2]/button")));
-        await createBanner.click();
         await driver.sleep(2000);
-        var createBanner = driver.wait(until.elementLocated(By.xpath("/html/body/application-root/div/application-layout/div/div/div/application-banners-list-container/div/div/div[2]/button")))
-        createBanner.click();
-        var createBanner = driver.wait(until.elementLocated(By.xpath("/html/body/application-root/div/application-layout/div/div/div/application-banners-list-container/div/div/div[2]/button")))
+        var createBanner = driver.wait(until.elementLocated(By.xpath('/html/body/application-root/div/application-layout/div/div/div/application-banners-list-container/div/div/div[2]/button')))
+        await createBanner.click();
+        var createBanner = driver.wait(until.elementLocated(By.xpath('/html/body/application-root/div/application-layout/div/div/div/application-banners-list-container/div/div/div[2]/button')))
          createBanner.click();
-        var courses = driver.wait(until.elementLocated(By.css("body > application-root > div > application-layout > div > div > div > application-create-banners-container > div > application-create-banners > div > div > form > div:nth-child(1) > div:nth-child(5) > mat-form-field")));
-         courses.click();
+        var createBanner = driver.wait(until.elementLocated(By.xpath('/html/body/application-root/div/application-layout/div/div/div/application-banners-list-container/div/div/div[2]/button')))
+         createBanner.click();
+        var createBanner = driver.wait(until.elementLocated(By.xpath('/html/body/application-root/div/application-layout/div/div/div/application-banners-list-container/div/div/div[2]/button')))
+         createBanner.click();
         var appsc = driver.wait(until.elementLocated(By.css("#mat-option-2 > span")));
          appsc.click();
+        await driver.sleep(2000);
         var bannerTitle = driver.wait(until.elementLocated(By.name("title")));
+          var courses = driver.wait(until.elementLocated(By.css("body > application-root > div > application-layout > div > div > div > application-create-banners-container > div > application-create-banners > div > div > form > div:nth-child(1) > div:nth-child(5) > mat-form-field")));
+         courses.click();
         await bannerTitle.sendKeys("APPSC DASARA DHAMAKA");
         var bannerURL = driver.wait(until.elementLocated(By.name("fileUrl")));
         await bannerURL.sendKeys("https://platoonline.in/storage/pdfs/TECHNICAL_ASSISTANCE61.jpeg");
@@ -75,22 +79,22 @@ describe("this is test for banks ", function () {
 
         var link = driver.wait(until.elementLocated(By.name("link")));
         await link.sendKeys("https://platoonline.in/storage/pdfs/TECHNICAL_ASSISTANCE61.jpeg");
-        await driver.sleep(5000)
+        // await driver.sleep(5000)
         // await driver.wait(until.elementIsNotVisible(By.css("#cdk-overlay-27 > snack-bar-container > div > div > application-toast-message > div > div > div.msg-list.error > span")))
         // var bannerSubmit = driver.wait(until.elementIsEnabled(By.css("body > application-root > div > application-layout > div > div > div > application-create-banners-container > div > application-create-banners > div > div > form > div.text-right.button-group > button.primary")));
         var bannerSubmit = driver.wait(until.elementLocated(By.css("body > application-root > div > application-layout > div > div > div > application-create-banners-container > div > application-create-banners > div > div > form > div.text-right.button-group > button.primary")));
         // console.log(bannerSubmit);
         driver.takeScreenshot().then(
             function (image) {
-                require('fs').writeFileSync('captured_image_3.png', image, 'base64');
+                require('fs').writeFileSync('screenshot', image, 'base64');
             }
         );
         await bannerSubmit.click();
 
     })
-    // })
+    
 
-    // describe(`this is for adding tags`, () => {
+
 
     it("checking creating tag ", async () => {
         
